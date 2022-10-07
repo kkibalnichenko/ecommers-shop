@@ -23,19 +23,25 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs12.x
+  region: ${self:custom.client.region}
 
 plugins:
   - serverless-finch
   - serverless-single-page-app-plugin
+  - serverless-s3-cleaner
 
 custom:
   client:
     bucketName: my-online-shop-app
+    region: eu-west-1
     distributionFolder: dist/app
 
   ## Serverless-single-page-app-plugin configuration:
   s3LocalPath: ${self:custom.client.distributionFolder}/
   s3BucketName: ${self:custom.client.bucketName}
+  serverless-s3-cleaner:
+    buckets:
+      - ${self:custom.client.bucketName}
 
 # you can overwrite defaults here
 #  stage: dev
@@ -160,7 +166,7 @@ resources:
       Properties:
         DistributionConfig:
           Origins:
-            - DomainName: ${self:custom.s3BucketName}.s3.amazonaws.com
+            - DomainName: ${self:custom.s3BucketName}.s3.${self:custom.client.region}.amazonaws.com
               ## An identifier for the origin which must be unique within the distribution
               Id: myS3Origin
               ## In case you don't want to restrict the bucket access use CustomOriginConfig and remove S3OriginConfig
