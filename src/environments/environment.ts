@@ -14,10 +14,10 @@ export const environment: Config = {
     cart: 'https://ybq9srvp4d.execute-api.eu-west-1.amazonaws.com/dev',
   },
   apiEndpointsEnabled: {
-    product: false,
+    product: true,
     order: false,
     import: false,
-    bff: true,
+    bff: false,
     cart: false,
   },
 };
