@@ -1,2 +1,2 @@
-link to CloudFront URL: https://d6upitupsaw5y.cloudfront.net/
-link to S3-website: http://my-online-shop-app.s3-website-us-east-1.amazonaws.com/
+link to CloudFront URL: https://d3fa9ccfm8scth.cloudfront.net
+link to S3-website: http://angular-online-shop-app.s3-website-eu-west-1.amazonaws.com/
